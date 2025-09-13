@@ -10,7 +10,8 @@ connectDB();
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "https://mern-todo-app-ebon.vercel.app",
+    origin:
+      process.env.CLIENT_URL || "https://mern-todo-app-4hfd.vercel.app/login",
   })
 );
 
