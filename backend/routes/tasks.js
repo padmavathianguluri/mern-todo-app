@@ -1,13 +1,10 @@
-// backend/routes/tasks.js
 const express = require("express");
 const router = express.Router();
 const Task = require("../models/Task");
 const auth = require("../middleware/authMiddleware");
 
-// All routes below require auth
 router.use(auth);
 
-// POST /api/tasks
 router.post("/", async (req, res) => {
   try {
     const { content } = req.body;
@@ -21,7 +18,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET /api/tasks
 router.get("/", async (req, res) => {
   try {
     const tasks = await Task.find({ user: req.user.id }).sort({
@@ -34,7 +30,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// PUT /api/tasks/:id
 router.put("/:id", async (req, res) => {
   try {
     const { content, completed } = req.body;
@@ -51,7 +46,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// DELETE /api/tasks/:id
 router.delete("/:id", async (req, res) => {
   try {
     const removed = await Task.findOneAndDelete({
